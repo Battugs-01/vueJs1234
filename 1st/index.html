@@ -9,29 +9,31 @@
   </head>
   <body>
     <div id="app">
-      <!-- <input type="text" v-on:input="changeTitle" /> -->
-      <h1 v-once>{{title}}</h1>
-      <p>{{hello()}} - <a v-bind:href="link">Google</a></p>
-      <hr />
-      <p>{{finishedLink}}</p>
-      <!-- <p>{{wer}}</p> -->
+      <button v-on:click="increase(5)">5-аар нэмэгдүүлэх</button>
+      <button v-on:click="counter++">1-ээр нэмэгдүүлэх</button>
+      <p>{{counter * 2 > 50 ? '50-аас их утга авсан байна' : '50 аас бага утга авсан байна'}}</p>
+      <p v-on:mousemove="updateCoordinate">
+        Координат : {{x}}/{{y}}
+        <span v-on:mousemove.stop>Stop</span>
+      </p>
+      <input type="text" v-on:keyup.enter.space.esc="alertMe"></input>
     </div>
     <script>
       new Vue({
         el: "#app",
         data: {
-          //   wer: "fsd",
-          title: "Hello World",
-          link: "http://google.com",
-          finishedLink: '<a href="http://youtube.com">Google</a>',
+          counter: 0,
         },
         methods: {
-          changeTitle: function (event) {
-            this.title = event.target.value;
+          increase: function (step) {
+            this.counter += step;
           },
-          hello: function () {
-            this.title = "Сайн байна уу?";
-            return this.title;
+          updateCoordinate: function (event) {
+            this.x = event.clientX;
+            this.y = event.clientY;
+          },
+          alertMe: function () {
+            alert("Hello");
           },
         },
       });

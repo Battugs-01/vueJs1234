@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue (1).js"></script>
+</head>
+
+    <div id="app">
+        <ul>
+            <li v-for="(orts , i) in ortsuud" :key="orts">{{orts}} : ({{i + 1}})</li>
+        </ul>
+
+        <button @:click="ortsuud.push('Халуун ногоо')">Орц нэмэх</button>
+
+        <hr>
+        <ul> 
+            <li v-for="khun in khumuus">
+                <span v-for="(value , key , index) in khun">{{key}} :  {{value}} {{index + 1}} <br></span>
+            </li>
+        </ul>
+        <hr>
+
+        <hr>
+            <span v-for="number in 20">{{number}}</span>
+        <hr>
+
+        <template v-for="(orts , index) in ortsuud">
+            <h1>{{orts}}</h1>
+            <p>{{index}}</p>
+        </template>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                ortsuud : ['Төмс' , 'Давс' , 'Гурил' , 'Мах'],
+                khumuus : [
+                    {ner : 'Болд' , nas : '20' , on : 2000},
+                    {ner : 'Баттөгс' , nas : '21' , on : 1999},
+                    {ner : 'Туяа' , nas : '18' , on : 2001},
+                ]
+            },
+        });
+    </script>
+</body>
+</html>
